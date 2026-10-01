@@ -26,9 +26,29 @@ int main()
         F = (x-a)/x;
     else
         F = ((10*x)/(c-4));
-    
+
     cout << endl;
     cout << "1) F = " << F << endl;
+
+    // розгалуження в повній формі
+    if ((x + 5) < 0 && c == 0) 
+    {
+        F = (1 / (a * x)) - b;
+    } 
+    else 
+    {
+        if ((x + 5) > 0 && c != 0) 
+        {
+            F = (x - a) / x;
+        } 
+        else 
+        {
+            F = ((10 * x) / (c - 4));
+        }
+    }
+
+    
+    cout << "2) F = " << F << endl;
 
     cin.get();
     return 0;

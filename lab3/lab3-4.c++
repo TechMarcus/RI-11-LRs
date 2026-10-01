@@ -15,15 +15,32 @@ int main() {
     cout << "R = "; cin >> R;
     cout << "x = "; cin >> x;
     cout << "y = "; cin >> y;
+    string result;
 
 
     bool inCircle = (x <= 0) && (y >= 0) && (x * x + y * y <= R * R);
     bool inTriangle = (y <= 0) && (2 * x + y >= 0) && (2 * x - y <= 2 * R);
 
     if (inCircle || inTriangle)
-        cout << "yes" << endl;
+        result = "yes";
     else
-        cout << "no" << endl;
+        result = "no";
+
+    cout << endl;
+    cout << "1) " << result << endl;
+
+    // розширена форма
+    if (inCircle) {
+        result = "yes";
+    } 
+    else if (inTriangle) {
+        result = "yes";
+    } 
+    else {
+        result = "no";
+    }
+
+    cout << "2) " << result << endl;
 
     return 0;
 }

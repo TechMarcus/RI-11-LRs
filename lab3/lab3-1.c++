@@ -30,6 +30,19 @@ int main()
     y = A-B;
 
     cout << endl;
+    cout << "1) y = " << y << endl;
+
+    // розгалуження в повній формі
+    if (x<1)
+        B = (0.65*x)+8;
+    else
+        if (x >= 1 && x < 5)
+            B = atan(((x+8.1) / 2) + exp(x));
+        else
+            B = sqrt(1 + sqrt(x));
+
+    y = A-B;
+
     cout << "2) y = " << y << endl;
     
     cin.get();
