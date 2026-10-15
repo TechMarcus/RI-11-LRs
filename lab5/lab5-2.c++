@@ -5,7 +5,7 @@
 #include <cmath>
 using namespace std;
 
-double S(const double x, const double eps, int &n, double s);
+double S(const double x, const double eps, int &n);
 double A(const double x, const int n, double a);
 
 #ifndef UNIT_TEST
@@ -30,9 +30,9 @@ int main()
 
     x = xp;
 
-    while (x <= xk)
+    while (x <= xk + dx / 2)
     {
-        s = S(x, eps, n, s);
+        s = S(x, eps, n);
 
         cout << "|" << setw(7) << setprecision(2) << x << " |"
              << setw(10) << setprecision(5) << exp(-x) << " |"
@@ -49,11 +49,11 @@ int main()
 }
 #endif
 
-double S(const double x, const double eps, int &n, double s)
+double S(const double x, const double eps, int &n)
 {
     n = 0;
     double a = 1;
-    s = a;
+    double s = a;
 
     do
     {
@@ -61,15 +61,12 @@ double S(const double x, const double eps, int &n, double s)
         a = A(x, n, a);
         s += a;
     }
-    while (abs(a) >= eps);
+    while (fabs(a) >= eps); 
 
     return s;
 }
 
 double A(const double x, const int n, double a)
 {
-    double R = -x / n;
-    a *= R;
-    return a;
+    return a * (-x / n);
 }
-
