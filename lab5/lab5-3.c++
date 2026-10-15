@@ -61,21 +61,18 @@ double s(const double x)
     }
     else
     {
-        double sum = 0;
+        const double y = 2 * x;
+        const double y2 = y * y;
 
-        for (int k = 0; k <= 4; k++)
+        double term = y; 
+        double sum = term;
+
+        for (int k = 0; k < 4; k++)
         {
-            int m = 2 * k + 1;
-            double fact = 1;
-
-            for (int j = 1; j <= m; j++)
-            {
-                fact *= j;
-            }
-
-            sum += pow(2.0, m) * pow(x, m) / fact;
+            term *= y2 / ((2 * k + 2) * (2 * k + 3));
+            sum += term;
         }
 
-        return sum / sin(2 * x);
+        return sum / sin(y);
     }
 }
