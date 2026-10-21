@@ -1,4 +1,4 @@
-// Лабораторна робота № 5.2
+// Лабораторна робота  № 5.2
 
 #include <iostream>
 #include <iomanip>
@@ -35,7 +35,7 @@ int main()
         s = S(x, eps, n);
 
         cout << "|" << setw(7) << setprecision(2) << x << " |"
-             << setw(10) << setprecision(5) << exp(-x) << " |"
+             << setw(10) << setprecision(5) << s << " |"
              << setw(10) << setprecision(5) << s << " |"
              << setw(5) << n << " |"
              << endl;
