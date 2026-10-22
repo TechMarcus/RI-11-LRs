@@ -7,14 +7,9 @@ int main()
 {
     double x, xp, xk, dx, y, B;
 
-    cout << "xp = ";
-    cin >> xp;
-
-    cout << "xk = ";
-    cin >> xk;
-
-    cout << "dx = ";
-    cin >> dx;
+    cout << "xp = "; cin >> xp;
+    cout << "xk = "; cin >> xk;
+    cout << "dx = "; cin >> dx;
 
     cout << fixed;
     cout << "--------------------------------" << endl;

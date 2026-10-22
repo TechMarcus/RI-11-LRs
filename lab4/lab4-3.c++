@@ -7,23 +7,13 @@ int main()
 {
     double x, xp, xk, dx, F, a, b, c;
     
-    cout << "a = ";
-    cin >> a;
+    cout << "a = "; cin >> a;
+    cout << "b = "; cin >> b;
+    cout << "c = "; cin >> c;
 
-    cout << "b = ";
-    cin >> b;
-
-    cout << "c = ";
-    cin >> c;
-
-    cout << "xp = ";
-    cin >> xp;
-
-    cout << "xk = ";
-    cin >> xk;
-
-    cout << "dx = ";
-    cin >> dx;
+    cout << "xp = "; cin >> xp;
+    cout << "xk = "; cin >> xk;
+    cout << "dx = "; cin >> dx;
 
     cout << fixed;
     cout << "--------------------------------" << endl;

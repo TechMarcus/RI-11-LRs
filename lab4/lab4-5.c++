@@ -14,7 +14,7 @@ int main()
     srand((unsigned) time(NULL));
 
     // Ручний інпут
-    cout << "\n--- Manual Input Tests ---\n";
+    cout << " Manual input\n";
     for (int i = 0; i < 10; i++)
     {
         cout << "x = "; cin >> x;

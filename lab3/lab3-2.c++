@@ -20,12 +20,14 @@ int main()
     cout << "c = "; cin >> c;
     cout << "x = "; cin >> x;
 
-    if ((x+5)<0 && c == 0)
-        F = (1/(a*x)) - b;
-    else if ((x+5)>0 && c != 0)
-        F = (x-a)/x;
-    else
-        F = ((10*x)/(c-4));
+    if ((x + 5) < 0 && c == 0)
+        F = (1 / (a * x)) - b;
+    if ((x + 5) > 0 && c != 0)
+        F = (x - a) / x;
+    if (!((x + 5) < 0 && c == 0) && !((x + 5) > 0 && c != 0)) 
+        F = ((10 * x) / (c - 4));
+    
+
 
     cout << endl;
     cout << "1) F = " << F << endl;

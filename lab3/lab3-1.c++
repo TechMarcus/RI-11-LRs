@@ -23,7 +23,7 @@ int main()
     if (x<1)
         B = (0.65*x)+8;
     if (x >= 1 && x < 5)
-        B = atan(((x+8.1) / 2) + exp(x));
+        B = atan(((x+6.1) / 2) + exp(x));
     if (x >= 5)
         B = sqrt(1 + sqrt(x));
 
@@ -37,7 +37,7 @@ int main()
         B = (0.65*x)+8;
     else
         if (x >= 1 && x < 5)
-            B = atan(((x+8.1) / 2) + exp(x));
+            B = atan(((x+6.1) / 2) + exp(x));
         else
             B = sqrt(1 + sqrt(x));
 
