@@ -28,7 +28,7 @@ void NullTheSpecified(int* a, const int size)
     }
 }
 
-void SumOfSpecified(int* a, const int size, int* sum, int* count)
+void SumOfSpecified(int* a, const int size, int* sum)
 {
     *sum = 0;
     for (int i=0; i<size; i++)

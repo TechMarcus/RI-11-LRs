@@ -32,7 +32,7 @@ int FindBiggestEven(const int* a, const int size)
 }
 
 template <typename T>
-int FindBiggestEven(const T* a, const int size)
+T FindBiggestEven(const T* a, const int size)
 {
     int max = -1;
     for (int i = 0; i < size; i++)

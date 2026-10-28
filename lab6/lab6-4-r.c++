@@ -64,21 +64,13 @@ T ProductRange(const T* a, int min, const int max)
 }
 
 template <typename T>
-T SetMinAndMaxInd(const T* a, const int size)
+T MultiplyInRange(const T* a, const int size)
 {
     int indexMax = IndexOfBiggestByModule(a, size);
     int indexMin = IndexOfSmallestByModule(a, size);
 
     if (indexMax < indexMin)
         swap(indexMin, indexMax);
-
-    return indexMin, indexMax;
-}
-
-template <typename T>
-T MultiplyInRange(const T* a, const int size)
-{
-    int indexMin, indexMax = SetMinAndMaxInd(a, size);
 
     if (indexMax - indexMin <= 1)
     {

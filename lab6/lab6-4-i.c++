@@ -56,23 +56,14 @@ int IndexOfSmallestByModule(const T* a, const int size)
     return index;
 }
 
-
-template <typename T>
-T SetMinAndMaxInd(const T* a, const int size)
-{
-    int indexMax = IndexOfBiggestByModule(a, size);
-    int indexMin = IndexOfSmallestByModule(a, size);
-    
-    if (indexMax < indexMin)
-    swap(indexMin, indexMax);
-    
-    return indexMin, indexMax;
-}
-
 template <typename T>
 T MultiplyInRange(const T* a, const int size)
 {
-    int indexMin, indexMax = SetMinAndMaxInd(a, size);
+    int indexMax = IndexOfBiggestByModule(a, size);
+    int indexMin = IndexOfSmallestByModule(a, size);
+
+    if (indexMax < indexMin)
+        swap(indexMin, indexMax);
     
     if (indexMax - indexMin <= 1) 
     {
