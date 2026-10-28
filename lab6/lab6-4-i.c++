@@ -6,8 +6,7 @@
 
 using namespace std;
 
-
-
+// Базові функції
 template <typename T>
 void PrintArray(const T* a, const int size)
 {
@@ -25,6 +24,7 @@ void FillWithRandom(T* a, const int size)
     }
 }
 
+// 1.1
 template <typename T>
 T SumPositive(const T* a, const int size)
 {
@@ -35,6 +35,7 @@ T SumPositive(const T* a, const int size)
     return sum;
 }
 
+// 1.2
 template <typename T>
 int IndexOfBiggestByModule(const T* a, const int size)
 {
@@ -55,6 +56,36 @@ int IndexOfSmallestByModule(const T* a, const int size)
     return index;
 }
 
+
+template <typename T>
+T SetMinAndMaxInd(const T* a, const int size)
+{
+    int indexMax = IndexOfBiggestByModule(a, size);
+    int indexMin = IndexOfSmallestByModule(a, size);
+    
+    if (indexMax < indexMin)
+    swap(indexMin, indexMax);
+    
+    return indexMin, indexMax;
+}
+
+template <typename T>
+T MultiplyInRange(const T* a, const int size)
+{
+    int indexMin, indexMax = SetMinAndMaxInd(a, size);
+    
+    if (indexMax - indexMin <= 1) 
+    {
+        return 1; 
+    }
+    T multipRes = 1;
+    for (int i = indexMin + 1; i < indexMax; i++) {
+        multipRes *= a[i];
+    }
+    
+    return multipRes;
+}
+// 2.0
 template <typename T>
 void SortOddDescending(T* a, const int size)
 {
@@ -71,35 +102,6 @@ void SortOddDescending(T* a, const int size)
             }
         }
     }
-}
-
-template <typename T>
-T SetMinAndMaxInd(const T* a, const int size)
-{
-    int indexMax = IndexOfBiggestByModule(a, size);
-    int indexMin = IndexOfSmallestByModule(a, size);
-
-    if (indexMax < indexMin)
-        swap(indexMin, indexMax);
-
-    return indexMin, indexMax;
-}
-
-template <typename T>
-T MultiplyInRange(const T* a, const int size)
-{
-    int indexMin, indexMax = SetMinAndMaxInd(a, size);
-
-    if (indexMax - indexMin <= 1) 
-    {
-        return 1; 
-    }
-    T multipRes = 1;
-    for (int i = indexMin + 1; i < indexMax; i++) {
-        multipRes *= a[i];
-    }
-
-    return multipRes;
 }
 
 #ifndef UNIT_TEST
