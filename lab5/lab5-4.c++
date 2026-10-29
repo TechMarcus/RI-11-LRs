@@ -7,16 +7,17 @@ using namespace std;
 double S0(const int limit, const int N) {
     double s = 0;
     for (int k = N; k <= limit; k++) {
-        s += sqrt(sin(1.*k)*sin(1.*k) + cos(N/k)*cos(N/k));
+        s += sqrt(sin(1.*k)*sin(1.*k) + cos(1.*N/k)*cos(1.*N/k));
     }
     return s;
 }
+
 
 double S1(const int limit, const int N, const int i) {
     if (i > limit) {
         return 0;
     } else {
-        return sqrt(sin(1.*i)*sin(1.*i) + cos(N/i)*cos(N/i)) + S1(limit, N, i + 1);
+        return sqrt(sin(1.*i)*sin(1.*i) + cos(1.*N/i)*cos(1.*N/i)) + S1(limit, N, i + 1);
     }
 }
 
@@ -24,12 +25,12 @@ double S2(const int limit, const int N, const int i) {
     if (i < N) {
         return 0;
     } else {
-        return sqrt(sin(1.*i)*sin(1.*i) + cos(N/i)*cos(N/i)) + S2(limit, N, i - 1);
+        return sqrt(sin(1.*i)*sin(1.*i) + cos(1.*N/i)*cos(1.*N/i)) + S2(limit, N, i - 1);
     }
 }
 
 double S3(const int limit, const int N, const int i, double t) {
-    t = t + sqrt(sin(1.*i)*sin(1.*i) + cos(N/i)*cos(N/i));
+    t = t + sqrt(sin(1.*i)*sin(1.*i) + cos(1.*N/i)*cos(1.*N/i));
     if (i >= limit) {
         return t;
     } else {
@@ -38,7 +39,7 @@ double S3(const int limit, const int N, const int i, double t) {
 }
 
 double S4(const int limit, const int N, const int i, double t) {
-    t = t + sqrt(sin(1.*i)*sin(1.*i) + cos(N/i)*cos(N/i));
+    t = t + sqrt(sin(1.*i)*sin(1.*i) + cos(1.*N/i)*cos(1.*N/i));
     if (i <= N) {
         return t;
     } else {
