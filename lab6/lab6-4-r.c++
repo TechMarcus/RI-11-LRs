@@ -64,7 +64,7 @@ T ProductRange(const T* a, int min, const int max)
 }
 
 template <typename T>
-T MultiplyInRange(const T* a, const int size)
+bool MultiplyInRange(const T* a, const int size, T& result)
 {
     int indexMax = IndexOfBiggestByModule(a, size);
     int indexMin = IndexOfSmallestByModule(a, size);
@@ -73,11 +73,10 @@ T MultiplyInRange(const T* a, const int size)
         swap(indexMin, indexMax);
 
     if (indexMax - indexMin <= 1)
-    {
-        return 1;
-    }
+        return false;
 
-    return ProductRange(a, indexMin + 1, indexMax);
+    result = ProductRange(a, indexMin + 1, indexMax);
+    return true;
 }
 
 // 2.0
@@ -121,10 +120,13 @@ int main()
     PrintArray(a, n);
 
     cout << "Sum of positive elements: " << SumPositive(a, n) << endl;
-    if (MultiplyInRange(a, n) == 1)
-        cout << "No elements between max and min by module." << endl;
+    
+    double result;
+    if (MultiplyInRange(a, n, result))
+        cout << "Product of elements between max and min by module: " << result << endl;
     else
-    cout << "Res of multiplying between max and min by module: " << MultiplyInRange(a, n) << endl;
+        cout << "No elements between max and min by module." << endl;
+
     cout << "Array after sorting odd elements in descending order: ";
     SortOddDescending(a, n); PrintArray(a, n);
 
