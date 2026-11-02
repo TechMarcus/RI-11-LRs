@@ -38,9 +38,9 @@ void FillWithRandom(T* a, const int size)
     }
 }
 
-int FindBiggestEven(const int* a, const int size, bool* found = nullptr)
+int FindBiggestEven(const int* a, const int size, bool* found)
 {
-    int max;
+    int max = 0;
     bool hasMax = false;
 
     for (int i = 0; i < size; i++)
@@ -52,13 +52,12 @@ int FindBiggestEven(const int* a, const int size, bool* found = nullptr)
         }
     }
 
-    if (found) 
-        *found = hasMax;
+    *found = hasMax;
     return max;
 }
 
 template <typename T>
-T FindBiggestEven(const T* a, const int size, bool* found = nullptr)
+T FindBiggestEven(const T* a, const int size, bool* found)
 {
     T max{};
     bool hasMax = false;
@@ -72,8 +71,8 @@ T FindBiggestEven(const T* a, const int size, bool* found = nullptr)
         }
     }
 
-    if (found) 
-        *found = hasMax;
+
+    *found = hasMax;
     return max;
 }
 
