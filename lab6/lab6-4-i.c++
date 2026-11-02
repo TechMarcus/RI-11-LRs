@@ -57,25 +57,24 @@ int IndexOfSmallestByModule(const T* a, const int size)
 }
 
 template <typename T>
-T MultiplyInRange(const T* a, const int size)
+bool MultiplyInRange(const T* a, const int size, T& result)
 {
     int indexMax = IndexOfBiggestByModule(a, size);
     int indexMin = IndexOfSmallestByModule(a, size);
 
     if (indexMax < indexMin)
         swap(indexMin, indexMax);
-    
-    if (indexMax - indexMin <= 1) 
-    {
-        return 1; 
-    }
-    T multipRes = 1;
-    for (int i = indexMin + 1; i < indexMax; i++) {
-        multipRes *= a[i];
-    }
-    
-    return multipRes;
+
+    if (indexMax - indexMin <= 1)
+        return false;               // nothing between them, result is not set
+
+    result = 1;
+    for (int i = indexMin + 1; i < indexMax; i++)
+        result *= a[i];
+
+    return true;
 }
+
 // 2.0
 template <typename T>
 void SortOddDescending(T* a, const int size)
@@ -113,10 +112,13 @@ int main()
     PrintArray(a, n);
 
     cout << "Sum of positive elements: " << SumPositive(a, n) << endl;
-    if (MultiplyInRange(a, n) == 1)
-        cout << "No elements between max and min by module." << endl;
+
+    double result;
+    if (MultiplyInRange(a, n, result))
+        cout << "Product of elements between max and min by module: " << result << endl;
     else
-    cout << "Res of multiplying between max and min by module: " << MultiplyInRange(a, n) << endl;
+        cout << "No elements between max and min by module." << endl;
+
     cout << "Array after sorting odd elements in descending order: ";
     SortOddDescending(a, n); PrintArray(a, n);
 
