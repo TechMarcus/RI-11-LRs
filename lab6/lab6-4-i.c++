@@ -20,7 +20,7 @@ void FillWithRandom(T* a, const int size)
 {
     for (int i=0; i<size; i++)
     {
-        a[i] = -50 + rand() % 100;
+        a[i] = (rand() % 1000 - 500) / 10.0;
     }
 }
 
@@ -66,7 +66,7 @@ bool MultiplyInRange(const T* a, const int size, T& result)
         swap(indexMin, indexMax);
 
     if (indexMax - indexMin <= 1)
-        return false;               // nothing between them, result is not set
+        return false;       
 
     result = 1;
     for (int i = indexMin + 1; i < indexMax; i++)

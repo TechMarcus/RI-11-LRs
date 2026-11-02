@@ -22,6 +22,7 @@ void PrintArray(int* a, const int size, int i = 0)
     cout << setw(4) << a[i];
     PrintArray(a, size, i + 1);
 }
+
 template <typename T>
 void FillWithRandom(T* a, const int size, int i = 0)
 {

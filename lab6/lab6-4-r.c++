@@ -20,7 +20,7 @@ void FillWithRandom(T* a, const int size, int i = 0)
 {
     if (i >= size) return;
 
-    a[i] = -50 + rand() % 100;
+    a[i] = (rand() % 1000 - 500) / 10.0;
     FillWithRandom(a, size,  i + 1);
 }
 
