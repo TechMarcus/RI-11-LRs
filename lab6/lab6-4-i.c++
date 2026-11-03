@@ -11,7 +11,7 @@ template <typename T>
 void PrintArray(const T* a, const int size)
 {
     for (int i = 0; i < size; i++)
-        cout << setw(5) << a[i];
+        cout << setw(6) << a[i];
     cout << endl;
 }
 
@@ -20,7 +20,10 @@ void FillWithRandom(T* a, const int size)
 {
     for (int i=0; i<size; i++)
     {
-        a[i] = (rand() % 1000 - 500) / 10.0;
+        if (i % 2 == 0)
+            a[i] = rand() % 100 - 50;
+        else
+            a[i] = (rand() % 1000 - 500) / 10.0;
     }
 }
 

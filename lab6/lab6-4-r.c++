@@ -11,7 +11,7 @@ template <typename T>
 void PrintArray(const T* a, const int size, int i = 0)
 {
     if (i >= size) { cout << endl; return; }
-    cout << setw(5) << a[i];
+    cout << setw(6) << a[i];
     PrintArray(a, size, i + 1);
 }
 
@@ -20,7 +20,10 @@ void FillWithRandom(T* a, const int size, int i = 0)
 {
     if (i >= size) return;
 
-    a[i] = (rand() % 1000 - 500) / 10.0;
+    if (i % 2 == 0)
+        a[i] = rand() % 100 - 50;
+    else
+        a[i] = (rand() % 1000 - 500) / 10.0;
     FillWithRandom(a, size,  i + 1);
 }
 
@@ -80,7 +83,7 @@ bool MultiplyInRange(const T* a, const int size, T& result)
 }
 
 // 2.0
-
+// Внутр цикл
 template <typename T>
 void SwapWithLargerOdd(T* a, const int size, const int i, int j)
 {
@@ -91,7 +94,7 @@ void SwapWithLargerOdd(T* a, const int size, const int i, int j)
     SwapWithLargerOdd(a, size, i, j + 1);
 }
 
-
+// Зовн цикл
 template <typename T>
 void SortOddDescending(T* a, const int size, int i = 0)
 {
