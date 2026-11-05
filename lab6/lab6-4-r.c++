@@ -33,7 +33,10 @@ T SumPositive(const T* a, const int size, int i = 0)
 {
     if (i == size)
         return 0;
-    T current = a[i] > 0 ? a[i] : 0;
+    T current = 0;
+    if (a[i] > 0) {
+        current = a[i];
+    }
     return current + SumPositive(a, size, i + 1);
 }
 
