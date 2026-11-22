@@ -1,0 +1,122 @@
+// Lab_7_1.cpp
+// < прізвище, ім’я автора >
+// Лабораторна робота № 7.1.
+// Пошук заданих елементів та впорядкування рядків / стовпчиків матриці.
+// Варіант 2
+
+#include <iostream>
+#include <time.h>
+#include <iomanip>
+using namespace std;
+
+void FillWithRandom(int** a, const int rowCount, const int colCount, const int Low, const int High);
+void Print(int** a, const int rowCount, const int colCount);
+void Sort(int** a, const int rowCount, const int colCount);
+void SwapPosition(int** a, const int row1, const int row2, const int colCount);
+void Calc(int** a, const int rowCount, const int colCount, int& S, int& k);
+
+#ifndef UNIT_TEST
+
+int main()
+{
+    srand((unsigned)time(NULL));
+
+    int Low = -41;
+    int High = 23;
+    int rowCount = 7;
+    int colCount = 9;
+
+    int** a = new int* [rowCount];
+    for (int i = 0; i < rowCount; i++)
+        a[i] = new int[colCount];
+
+    FillWithRandom(a, rowCount, colCount, Low, High);
+    cout << "Початкова матриця:" << endl;
+    Print(a, rowCount, colCount);
+
+    // 2 завдання
+    Sort(a, rowCount, colCount);
+    cout << "Впорядкована матриця:" << endl;
+    Print(a, rowCount, colCount);
+
+    // 1 завдання
+    int S = 0;
+    int k = 0;
+    Calc(a, rowCount, colCount, S, k);
+    cout << "Кількість елементів, що задовольняють критерій: k = " << k << endl;
+    cout << "Сума цих елементів: S = " << S << endl;
+    cout << "Матриця після заміни знайдених елементів нулями:" << endl;
+    Print(a, rowCount, colCount);
+
+    for (int i = 0; i < rowCount; i++)
+        delete[] a[i];
+    delete[] a;
+
+    return 0;
+}
+
+#endif
+
+void FillWithRandom(int** a, const int rowCount, const int colCount, const int Low, const int High)
+{
+    for (int i = 0; i < rowCount; i++)
+        for (int j = 0; j < colCount; j++)
+            a[i][j] = Low + rand() % (High - Low + 1);
+}
+
+// Виведення матриці у вигляді таблиці
+void Print(int** a, const int rowCount, const int colCount)
+{
+    cout << endl;
+    for (int i = 0; i < rowCount; i++)
+    {
+        for (int j = 0; j < colCount; j++)
+            cout << setw(4) << a[i][j];
+        cout << endl;
+    }
+    cout << endl;
+}
+
+// Впорядкування рядків: 1-й стовпчик ↑, 2-й стовпчик ↑, 3-й стовпчик ↓
+void Sort(int** a, const int rowCount, const int colCount)
+{
+    for (int i0 = 0; i0 < rowCount - 1; i0++)
+        for (int i1 = 0; i1 < rowCount - i0 - 1; i1++)
+            if ((a[i1][0] > a[i1 + 1][0])
+                ||
+                (a[i1][0] == a[i1 + 1][0] &&
+                 a[i1][1] > a[i1 + 1][1])
+                ||
+                (a[i1][0] == a[i1 + 1][0] &&
+                 a[i1][1] == a[i1 + 1][1] &&
+                 a[i1][2] < a[i1 + 1][2]))
+                SwapPosition(a, i1, i1 + 1, colCount);
+}
+
+
+void SwapPosition(int** a, const int row1, const int row2, const int colCount)
+{
+    int tmp;
+    for (int j = 0; j < colCount; j++)
+    {
+        tmp = a[row1][j];
+        a[row1][j] = a[row2][j];
+        a[row2][j] = tmp;
+    }
+}
+
+
+//всі крім додатних у яких хоча б один індекс непарний.
+void Calc(int** a, const int rowCount, const int colCount, int& S, int& k)
+{
+    S = 0;
+    k = 0; // кількість підходящих елементів
+    for (int i = 0; i < rowCount; i++)
+        for (int j = 0; j < colCount; j++)
+            if (!(a[i][j] > 0 && (i % 2 != 0 || j % 2 != 0)))
+            {
+                S += a[i][j];
+                k++;
+                a[i][j] = 0;
+            }
+}
