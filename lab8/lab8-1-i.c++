@@ -1,6 +1,5 @@
-// Дано літерний рядок, який містить послідовність символів s[0], ..., s[n], ...
-// 1. Підрахувати загальне число входжень символів '+', '-', '=' в цій послідовності.
-// 2. Замінити кожний із символів '+', '-', '=' парою зірочок "**".
+// Підрахувати загальне число входжень символів '+', '-', '=' в цій послідовності і замінити їх на **
+
 #include <iostream>
 using namespace std;
 
@@ -32,13 +31,14 @@ char* Change(char* dest, const char* str)
     dest[j] = '\0';
     return dest;
 }
+
 #ifndef UNIT_TEST
 
 int main()
 {
-    char str[101];
+    char str[51];
     cout << "Enter string:" << endl;
-    cin.getline(str, 100);
+    cin.getline(str, 50);
 
     cout << "String contained " << Count(str) << " characters '+', '-', '='" << endl;
 
