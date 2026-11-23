@@ -1,3 +1,6 @@
+// chcp 65001 
+
+
 #define UNIT_TEST
 #include <gtest/gtest.h>
 #include "./lab7-1.c++"

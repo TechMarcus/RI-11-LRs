@@ -1,11 +1,10 @@
 // Lab_7_1.cpp
-// < прізвище, ім’я автора >
+// Возниця Маркіян
 // Лабораторна робота № 7.1.
 // Пошук заданих елементів та впорядкування рядків / стовпчиків матриці.
 // Варіант 2
 
 #include <iostream>
-#include <time.h>
 #include <iomanip>
 using namespace std;
 
@@ -64,7 +63,6 @@ void FillWithRandom(int** a, const int rowCount, const int colCount, const int L
             a[i][j] = Low + rand() % (High - Low + 1);
 }
 
-// Виведення матриці у вигляді таблиці
 void Print(int** a, const int rowCount, const int colCount)
 {
     cout << endl;
@@ -77,7 +75,6 @@ void Print(int** a, const int rowCount, const int colCount)
     cout << endl;
 }
 
-// Впорядкування рядків: 1-й стовпчик ↑, 2-й стовпчик ↑, 3-й стовпчик ↓
 void Sort(int** a, const int rowCount, const int colCount)
 {
     for (int i0 = 0; i0 < rowCount - 1; i0++)
